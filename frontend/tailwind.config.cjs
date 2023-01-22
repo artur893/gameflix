@@ -5,7 +5,37 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "primary": "#564d4d",
+
+        "secondary": "#831010",
+
+        "accent": "#db0000",
+
+        "font": "	#ffffff",
+
+        "bg": "#000000",
+      },
+    },
   },
-  plugins: [],
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+
+          "primary": "#564d4d",
+
+          "secondary": "#831010",
+
+          "accent": "#db0000",
+
+          "font": "	#ffffff",
+
+          "bg": "#000000",
+        },
+      },
+    ],
+  },
+  plugins: [require("daisyui")],
 }
