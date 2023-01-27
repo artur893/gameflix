@@ -47,13 +47,13 @@ function Register() {
                     <h1 className='px-16 py-12 text-3xl font-bold'>Sign Up</h1>
                     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col px-16 pb-12'>
                         <input {...register('login')} type="text" placeholder="Login" className="input input-primary w-full max-w-xs bg-primary" />
-                        <p className='text-xs text-accent mt-1 mx-1 h-0'>{errors.login?.message}</p>
+                        <p className='text-xs font-bold text-accent mt-1 mx-1 h-0'>{errors.login?.message}</p>
                         <input {...register('email')} type="email" placeholder="E-mail" className="input input-primary w-full max-w-xs mt-6 bg-primary" />
-                        <p className='text-xs text-accent mt-1 mx-1 h-0'>{errors.email?.message}</p>
+                        <p className='text-xs font-bold text-accent mt-1 mx-1 h-0'>{errors.email?.message}</p>
                         <input {...register('password')} type="password" placeholder="Password" className="input input-primary w-full max-w-xs mt-6 bg-primary" />
-                        <p className='text-xs text-accent mt-1 mx-1 h-0'>{errors.password?.message}</p>
+                        <p className='text-xs font-bold text-accent mt-1 mx-1 h-0'>{errors.password?.message}</p>
                         <input {...register('confirm')} type="password" placeholder="Confirm password" className="input input-primary w-full max-w-xs mt-6 bg-primary" />
-                        <p className='text-xs text-accent mt-1 mx-1 h-0'>{errors.confirm?.message}</p>
+                        <p className='text-xs font-bold text-accent mt-1 mx-1 h-0'>{errors.confirm?.message}</p>
                         <button className="btn btn-accent text-font my-8">REGISTER</button>
                     </form>
                 </div>

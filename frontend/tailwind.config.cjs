@@ -8,14 +8,13 @@ module.exports = {
     extend: {
       colors: {
         "primary": "#564d4d",
-
         "secondary": "#831010",
-
         "accent": "#db0000",
-
         "font": "	#ffffff",
-
         "bg": "#000000",
+        "success": "#16a34a",
+        "warning": "#DCB404",
+        "error": "#dc2626",
       },
     },
   },
@@ -23,16 +22,14 @@ module.exports = {
     themes: [
       {
         mytheme: {
-
           "primary": "#564d4d",
-
           "secondary": "#831010",
-
           "accent": "#db0000",
-
           "font": "	#ffffff",
-
           "bg": "#000000",
+          "success": "#16a34a",
+          "warning": "#DCB404",
+          "error": "#dc2626",
         },
       },
     ],
