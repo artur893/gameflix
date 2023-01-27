@@ -4,9 +4,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
 import axios from "axios";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
     const [message, setMessage] = useState(null);
+    const navigete = useNavigate()
 
     const emailRegexValidation = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     const passLowercaseValidation = '(?=.*?[a-z])'
@@ -43,9 +45,11 @@ function Register() {
             email: data.email,
             password: data.password
         })
-            .then((res) => setMessage(res.data.message))
+            .then((res) => {
+                setMessage(res.data.message)
+                setTimeout(() => navigete('/login'), 3000)
+            })
             .catch((err) => setMessage(err.response.data.message))
-
     }
 
     function setInputStyle(error, dirty) {
@@ -53,8 +57,6 @@ function Register() {
         else if (!error && dirty && isSubmitted) return 'input-success'
         else return 'input-primary'
     }
-
-    console.log(errors)
 
     return (
         <div className='w-screen h-screen bg-bg'>
