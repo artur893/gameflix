@@ -2,8 +2,12 @@ import { Nav } from '../components/Nav'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
+import axios from "axios";
+import { useState } from 'react';
 
 function Register() {
+    const [message, setMessage] = useState(null);
+
     const emailRegexValidation = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     const passLowercaseValidation = '(?=.*?[a-z])'
     const passUppercaseValidation = '(?=.*?[A-Z])'
@@ -33,8 +37,15 @@ function Register() {
     const formOptions = { resolver: yupResolver(formSchema) }
     const { register, handleSubmit, formState: { errors, dirtyFields, isSubmitted } } = useForm(formOptions)
 
-    function onSubmit(data) {
-        console.log(data)
+    async function onSubmit(data) {
+        axios.post('http://localhost:5000/api/users/register', {
+            login: data.login,
+            email: data.email,
+            password: data.password
+        })
+            .then((res) => setMessage(res.data.message))
+            .catch((err) => setMessage(err.response.data.message))
+
     }
 
     function setInputStyle(error, dirty) {
@@ -65,6 +76,7 @@ function Register() {
                             className={`${setInputStyle(errors.confirm, dirtyFields.confirm)} input w-full max-w-xs mt-6 bg-primary`} />
                         <p className='text-xs font-bold text-error mt-1 mx-1 h-0'>{errors.confirm?.message}</p>
                         <button className="btn btn-accent text-font my-8">REGISTER</button>
+                        <p className='text-xl text-center font-bold h-0 mb-4'>{message}</p>
                     </form>
                 </div>
             </div>
