@@ -1,3 +1,4 @@
+import { RequireAuth } from 'react-auth-kit'
 import { Routes, Route } from 'react-router-dom'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
@@ -9,6 +10,7 @@ export default function App() {
       <Route path='/' element={<Home />} />
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
+      <Route path='/require' element={<RequireAuth loginPath='/login'><Home /></RequireAuth>} />
     </Routes>
   )
 }
