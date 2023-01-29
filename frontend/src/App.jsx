@@ -1,16 +1,16 @@
 import { RequireAuth } from 'react-auth-kit'
 import { Routes, Route } from 'react-router-dom'
-import { Home } from './pages/Home'
+import { Heropage } from './pages/Heropage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 
 export default function App() {
   return (
     <Routes>
-      <Route path='/' element={<Home />} />
+      <Route path='/' element={<Heropage />} />
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
-      <Route path='/require' element={<RequireAuth loginPath='/login'><Home /></RequireAuth>} />
+      <Route path='/home' element={<RequireAuth loginPath='/login'><Heropage /></RequireAuth>} />
     </Routes>
   )
 }

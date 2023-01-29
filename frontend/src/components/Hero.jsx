@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 function Hero() {
     return (
-        <div className="hero w-screen h-full text-font bg-[url('https://www.neuropeakpro.com/wp-content/uploads/2018/12/Blog-42.jpg')]">
+        <div className="hero h-screen text-font bg-[url('https://www.neuropeakpro.com/wp-content/uploads/2018/12/Blog-42.jpg')]">
             <div className="hero-content text-center">
                 <div className="max-w-36">
                     <h1 className="text-6xl font-bold">Unlimited games</h1>

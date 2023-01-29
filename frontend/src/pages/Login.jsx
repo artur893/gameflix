@@ -1,11 +1,23 @@
 import { Nav } from '../components/Nav'
 import { useForm } from 'react-hook-form'
 import axios from "axios";
-import { useSignIn } from 'react-auth-kit';
+import { useIsAuthenticated, useSignIn } from 'react-auth-kit';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const { register, handleSubmit } = useForm()
     const signIn = useSignIn()
+    const navigate = useNavigate()
+    const isAuthenticated = useIsAuthenticated()
+
+    const [message, setMessage] = useState(null)
+
+    useEffect(() => {
+        if (isAuthenticated()) {
+            setTimeout(() => navigate('/home'), 3000)
+        }
+    })
 
     async function onSubmit(data) {
         axios.post('http://localhost:5000/api/users/login', {
@@ -13,7 +25,8 @@ function Login() {
             password: data.password
         })
             .then((res) => {
-                console.log(res.data)
+                console.log(res)
+                setMessage(res.data.message)
                 signIn({
                     token: res.data.token,
                     expiresIn: 3600,
@@ -21,7 +34,10 @@ function Login() {
                     authState: { login: res.data.login }
                 })
             })
-            .catch((err) => console.log(err.response.data))
+            .catch((err) => {
+                console.log(err)
+                setMessage(err.response.data.message)
+            })
     }
 
     return (
@@ -34,6 +50,7 @@ function Login() {
                         <input {...register('login')} type="text" placeholder="Login" className="input input-primary w-full max-w-xs bg-primary" />
                         <input {...register('password')} type="password" placeholder="Password" className="input input-primary w-full max-w-xs bg-primary" />
                         <button className="btn btn-accent text-font my-8">LOGIN</button>
+                        <p className='text-xl text-center font-bold h-0 mb-4'>{message}</p>
                     </form>
                 </div>
             </div>
