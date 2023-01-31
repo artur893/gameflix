@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 function Heropage() {
     return (
         <>
-            <Nav />
+            <Nav style='absolute' />
             <Hero />
             <Info title='Enjoy on your PC.' description='Play browser games, whenever you want.' />
             <Info title='Singleplayer games.' description='Pick a game and get started your journey.' />

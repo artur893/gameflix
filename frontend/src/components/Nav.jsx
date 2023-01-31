@@ -2,7 +2,7 @@ import { useSignOut } from 'react-auth-kit'
 import { Link } from 'react-router-dom'
 import { useIsAuthenticated } from 'react-auth-kit'
 
-function Nav() {
+function Nav(props) {
     const signOut = useSignOut()
     const isAuthenticated = useIsAuthenticated()
 
@@ -15,8 +15,8 @@ function Nav() {
     }
 
     return (
-        <header className="flex justify-between w-full absolute">
-            <Link to='/'><h1 className="text-accent font-bold text-5xl m-8">GAMEFLIX</h1></Link>
+        <header className={`flex justify-between w-full ${props.style}`}>
+            <Link to='/home'><h1 className="text-accent font-bold text-5xl m-8">GAMEFLIX</h1></Link>
             {displayLoginLogoutBtn()}
         </header>
     )

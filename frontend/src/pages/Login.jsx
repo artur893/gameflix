@@ -42,7 +42,7 @@ function Login() {
 
     return (
         <div className='w-screen h-screen bg-bg'>
-            <Nav />
+            <Nav style='absolute' />
             <div className="hero w-screen h-full text-font bg-[url('https://www.neuropeakpro.com/wp-content/uploads/2018/12/Blog-42.jpg')]">
                 <div className='bg-bg/70'>
                     <h1 className='px-16 py-12 text-3xl font-bold'>Sign In</h1>
